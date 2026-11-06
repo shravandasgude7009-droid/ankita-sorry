@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eee4f5">
+<title>To My Anku 💜</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap');
+  :root { --ink:#49364f; --plum:#76517f; --lav:#e9dcef; --paper:#fffaf1; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:var(--ink);
+    background: radial-gradient(ellipse at 15% 15%, #fff9ff 0, transparent 35%),
+                radial-gradient(ellipse at 85% 80%, #e2cce9 0, transparent 40%),
+                linear-gradient(135deg,#eee5f3,#d9c5e3 55%,#f5eaf4);
+    font-family:Manrope, sans-serif; display:grid; place-items:center; padding:28px 16px;
+  }
+  .glow { position:fixed; width:260px; height:260px; border-radius:50%; filter:blur(65px); opacity:.35; pointer-events:none; }
+  .g1 { background:#fff; top:-100px; left:-80px; } .g2 { background:#c69bd5; bottom:-120px; right:-70px; }
+  .petal { position:fixed; color:#fff8ff; opacity:.65; pointer-events:none; animation: drift 11s linear infinite; font-size:18px; }
+  @keyframes drift { from{transform:translateY(110vh) rotate(0)} to{transform:translateY(-15vh) rotate(300deg)} }
+  .shell { width:min(100%,680px); position:relative; z-index:1; text-align:center; }
+  .eyebrow { letter-spacing:.22em; text-transform:uppercase; font-size:10px; color:#866b8d; margin-bottom:12px; }
+  h1 { font:clamp(42px,9vw,68px)/1.05 'Great Vibes',cursive; color:#704c79; margin:0 0 12px; font-weight:400; }
+  .intro { max-width:430px; margin:0 auto 28px; color:#715f75; font-size:13px; line-height:1.8; }
+  .envelope-wrap { display:grid; place-items:center; min-height:310px; perspective:1000px; }
+  .envelope { width:min(86vw,390px); height:230px; position:relative; cursor:pointer; filter:drop-shadow(0 18px 22px #76517f25); transition:transform .3s ease; }
+  .envelope:hover { transform:translateY(-5px); }
+  .env-back { position:absolute; inset:0; background:#b995c5; border-radius:9px; }
+  .env-front { position:absolute; inset:0; background:linear-gradient(145deg,#d9c4e0,#c5a9d0); clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%); border-radius:9px; }
+  .env-flap { position:absolute; inset:0; background:linear-gradient(145deg,#eadced,#c8add3); clip-path:polygon(0 0,100% 0,50% 62%); transform-origin:top; transition:transform .8s ease; z-index:4; border-radius:9px 9px 0 0; }
+  .seal { position:absolute; z-index:5; left:50%; top:58%; transform:translate(-50%,-50%); width:48px; height:48px; border-radius:50%; background:#875d91; color:#fff; display:grid; place-items:center; font-size:22px; box-shadow:0 4px 12px #67487540; transition:opacity .3s; }
+  .letter-peek { position:absolute; z-index:2; width:84%; height:190px; left:8%; bottom:12px; background:var(--paper); border-radius:5px; transition:transform .9s ease; display:grid; place-items:center; color:#8c6d91; font:28px 'Great Vibes',cursive; }
+  .envelope.open .env-flap { transform:rotateX(180deg); z-index:0; }
+  .envelope.open .letter-peek { transform:translateY(-115px); }
+  .envelope.open .seal { opacity:0; }
+  .tap { font-size:11px; letter-spacing:.12em; color:#846b89; margin-top:3px; }
+  .letter-card { display:none; text-align:left; width:min(100%,590px); margin:5px auto 0; padding:clamp(25px,6vw,48px); background:
+      linear-gradient(90deg, transparent 0 34px, #eedee5 35px, transparent 36px),
+      repeating-linear-gradient(to bottom, var(--paper) 0 31px, #eadfe6 32px, var(--paper) 33px);
+    border:1px solid #eadde8; border-radius:5px; box-shadow:0 22px 55px #684a7130; position:relative;
+    animation:rise .9s ease both;
+  }
+  @keyframes rise { from{opacity:0; transform:translateY(25px)} to{opacity:1; transform:translateY(0)} }
+  .letter-card.show { display:block; }
+  .letter-top { text-align:center; font:34px 'Great Vibes',cursive; color:#805b88; margin:0 0 22px; }
+  .letter-body { font:clamp(16px,3.7vw,18px)/1.85 'Cormorant Garamond',serif; color:#514452; }
+  .letter-body p { margin:0 0 15px; }
+  .signature { text-align:right; margin-top:23px; font:30px 'Great Vibes',cursive; color:#805b88; }
+  .tiny-heart { text-align:center; color:#a77caf; letter-spacing:9px; margin-top:24px; }
+  .closing { display:none; text-align:center; margin:25px auto 0; animation:rise .8s ease both; }
+  .closing.show { display:block; }
+  .closing h2 { font:38px 'Great Vibes',cursive; color:#704c79; font-weight:400; margin:0 0 5px; }
+  .closing p { color:#79657d; font-size:12px; letter-spacing:.08em; }
+  button { border:0; background:#805b88; color:white; border-radius:30px; padding:13px 24px; font:600 12px Manrope,sans-serif; letter-spacing:.04em; cursor:pointer; box-shadow:0 7px 18px #76517f30; margin-top:20px; }
+  button:hover { background:#6e4a78; }
+  .footer { margin-top:28px; color:#987fa0; font-size:10px; letter-spacing:.12em; }
+  @media(max-width:420px) { .envelope-wrap{min-height:275px}.envelope{height:195px}.letter-peek{height:165px} }
+  @media(prefers-reduced-motion:reduce) { *,*::before,*::after{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div class="petal" style="left:8%;animation-delay:-2s">✿</div>
+<div class="petal" style="left:25%;animation-delay:-8s;font-size:13px">♡</div>
+<div class="petal" style="left:73%;animation-delay:-5s">✧</div>
+<div class="petal" style="left:91%;animation-delay:-1s;font-size:13px">✿</div>
+
+<main class="shell">
+  <div id="opening">
+    <div class="eyebrow">A little letter, from my heart</div>
+    <h1>To my Anku</h1>
+    <p class="intro">Hey, Baby Girl. I made this little space just for you.<br>Whenever you're ready, open my letter. 💜</p>
+    <div class="envelope-wrap">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open the letter">
+        <div class="env-back"></div>
+        <div class="letter-peek">A note for you…</div>
+        <div class="env-flap"></div>
+        <div class="env-front"></div>
+        <div class="seal">♥</div>
+      </div>
+    </div>
+    <div class="tap">TAP THE ENVELOPE TO OPEN</div>
+  </div>
+
+  <article class="letter-card" id="letter">
+    <div class="letter-top">My dearest Anku,</div>
+    <div class="letter-body">
+      <p>Hey Baby Girl,</p>
+      <p>I want to say something properly, without making excuses. I'm genuinely sorry for not wishing you on Dhanteras and, more than that, for not treating you the way you deserve lately.</p>
+      <p>I understand that it can hurt when someone you care about forgets a day that matters to you. I should have remembered, and I should have been more thoughtful with your feelings. You shouldn't have to wonder whether you matter to me.</p>
+      <p>You deserve care, respect, patience, and the little efforts that make you feel loved. I know that saying sorry doesn't undo the way my actions made you feel, and I don't expect one letter to fix everything.</p>
+      <p>I just want you to know that I recognise where I went wrong. I want to be more considerate, listen better, remember the little things, and show you through my actions that your feelings matter to me.</p>
+      <p>I'm not asking you to forget it or feel okay instantly. Take the time you need. I only hope I can earn back your smile and your trust, one day and one thoughtful action at a time.</p>
+      <p>I'm truly sorry, my Baby Girl. You mean so much to me, Anku. 💜</p>
+    </div>
+    <div class="signature">With love, Your Shravan</div>
+    <div class="tiny-heart">♥ &nbsp; ♥ &nbsp; ♥</div>
+  </article>
+
+  <section class="closing" id="closing">
+    <h2>I'm sorry, my beautiful Anku.</h2>
+    <p>YOU DESERVE TO FEEL LOVED, EVERY SINGLE DAY.</p>
+    <button id="readAgain">Read my letter again</button>
+  </section>
+  <div class="footer">MADE WITH LOVE · JUST FOR YOU 💜</div>
+</main>
+<script>
+  const envelope = document.getElementById('envelope');
+  const opening = document.getElementById('opening');
+  const letter = document.getElementById('letter');
+  const closing = document.getElementById('closing');
+  function openLetter() {
+    if (envelope.classList.contains('open')) return;
+    envelope.classList.add('open');
+    setTimeout(() => {
+      opening.style.display = 'none';
+      letter.classList.add('show');
+      closing.classList.add('show');
+    }, 750);
+  }
+  envelope.addEventListener('click', openLetter);
+  envelope.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLetter(); }});
+  document.getElementById('readAgain').addEventListener('click', () => {
+    closing.classList.remove('show'); letter.classList.remove('show');
+    opening.style.display = 'block'; envelope.classList.remove('open');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+</script>
+</body>
+</html>
